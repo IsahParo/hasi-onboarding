@@ -16,13 +16,14 @@ interface Props {
 }
 
 export default function Bloco8({ data, onChange, respostas, onExportPdf, isExporting }: Props) {
-  const handleWhatsApp = () => {
+  const handleWhatsApp = async () => {
+    await onExportPdf();
     const msg =
-      `Olá Isa! Segue meu briefing estratégico completo:\n\n` +
+      `Olá Isa! Acabei de preencher meu briefing estratégico completo.\n\n` +
       `*Marca:* ${respostas.bloco1.nomeMarca}\n` +
       `*Segmento:* ${respostas.bloco1.segmento}\n` +
       `*Objetivo principal:* ${respostas.bloco7.objetivo}\n\n` +
-      `_(Briefing completo em PDF em anexo)_`;
+      `O PDF foi baixado no meu dispositivo — vou anexar aqui na conversa!`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`);
   };
 
